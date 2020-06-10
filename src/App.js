@@ -715,6 +715,7 @@ class App extends Component {
 
   handleClick(e) {
     const element = this.state.keys.find(obj => obj.id === e.target.id);
+    console.log(e.target.id);
     console.log(element);
     const result = this.state.result;
     const count = this.state.count;

@@ -8,7 +8,10 @@ const ClearOne = (props) => {
         type="button"
         id={props.button.id}
         onClick={props.handleClick}>
-          <i class="fas fa-arrow-left"></i>
+          <i 
+            id={props.button.id}
+            className="fas fa-arrow-left"
+            ></i>
       </button>
     </div>
   )
