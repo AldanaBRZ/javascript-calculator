@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  position: absolute;
+   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -13,16 +13,16 @@
 
 .display {
   background-color: #ebebeb;
+  display: block; 
 }
 
 .button {
   padding: 0;
-  /* border: 0.5px solid black; */
 }
 
 .btn {
   border-radius: 0;
-  border: 0.5px solid black;
+  /* border: 0.5px solid black; */
 }
 
 #display-div {

@@ -6,7 +6,7 @@ const Display = (props) => {
       className="col-12"
       id="display-div">
       <p className="display-count">{props.count}</p>
-      <h3 id="display">{props.result}</h3>
+      <h3 className="display-result" id="display">{props.result}</h3>
     </div>
   )
 }
