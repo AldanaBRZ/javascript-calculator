@@ -14,6 +14,7 @@
 .display {
   background-color: #ebebeb;
   display: block; 
+  border: 3px inset grey;
 }
 
 .button {
@@ -22,11 +23,9 @@
 
 .btn {
   border-radius: 0;
-  /* border: 0.5px solid black; */
 }
 
 #display-div {
-  border: 3px inset grey;
   display: inline-block;
 }
 
@@ -39,4 +38,9 @@
 .display-count {
   margin: 0;
   text-align: right;
+}
+
+.display-count, .display-result {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

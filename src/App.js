@@ -108,7 +108,6 @@ class App extends Component {
       realCount: 0
     }
     this.handleClick = this.handleClick.bind(this);
-    
   }
 
   handleBothZero = (element) => {
@@ -715,8 +714,6 @@ class App extends Component {
 
   handleClick(e) {
     const element = this.state.keys.find(obj => obj.id === e.target.id);
-    console.log(e.target.id);
-    console.log(element);
     const result = this.state.result;
     const count = this.state.count;
     if ((result === '0' && count === '0') || (result === '0' && count === '0=0')) {
@@ -730,6 +727,12 @@ class App extends Component {
     } 
   }
 
+  handleKeyPress = (e) => {
+    const element = this.state.keys.find(obj => obj.id === e.target.id);
+    console.log(element);
+    console.log(e);
+  }
+
   render() {
     return (
       <div className="App container">
@@ -737,7 +740,8 @@ class App extends Component {
           keys={this.state.keys}
           result={this.state.result}
           count={this.state.count}
-          handleClick={this.handleClick} />
+          handleClick={this.handleClick}
+          handleKeyPress={this.handleKeyPress} />
       </div>
     );
   }

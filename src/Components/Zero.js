@@ -7,7 +7,8 @@ const Zero = (props) => {
         className="btn btn-secondary btn-block"
         type="button"
         id={props.button.id}
-        onClick={props.handleClick}>
+        onClick={props.handleClick}
+        onKeyPress={props.handleKeyPress}>
           {props.button.display}
       </button>
     </div>
