@@ -11,7 +11,7 @@ import Display from './Display';
 const Calculator = (props) => {
   return(
     <div className="row">
-      <div className="container col-5 calculator">
+      <div className="container col-sm-6 col-md-3 calculator">
         <div className="row display">
           <Display 
             result={props.result}

@@ -40,7 +40,7 @@ class App extends Component {
         {
           id: 'equals',
           display: '=',
-          keyCode: 48
+          keyCode: 13
         },
         {
           id: 'zero',
@@ -189,6 +189,7 @@ class App extends Component {
             break;
           case 'clear':
             this.setState({
+              result: '0',
               count: '0'
             })
             break;
@@ -256,6 +257,7 @@ class App extends Component {
             break;
           case 'clear':
             this.setState({
+              result: '0',
               count: '0'
             })
             break;
@@ -367,6 +369,79 @@ class App extends Component {
               result: prevState.result + element.display,
               count: prevState.count + element.display
             }))
+            break;
+        }
+        break;
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+      case '.':
+        switch(element.id) {
+          case 'zero':
+          case 'one':
+          case 'two':
+          case 'three':
+          case 'four':
+          case 'five':
+          case 'six':
+          case 'seven':
+          case 'eight':
+          case 'nine':
+            this.setState((prevState) => ({
+              result: element.display,
+              count: prevState.count + element.display
+            }))
+            break;
+          case 'modulo':
+          case 'divide':
+          case 'multiply':
+          case 'subtract':
+          case 'add':
+            this.setState((prevState) => ({
+              result: element.display,
+              count: prevState.count + element.display
+            }))
+            break;
+          case 'clear':
+            this.setState({
+              result: '0',
+              count: '0'
+            })
+            break;
+          case 'clearOne':
+            if(result.length === 1 && result !== '0' && count.length === 1) {
+              this.setState({
+                result: '0',
+                count: '0'
+              })
+            } else if(result.length === 1 && result !== '0') {
+              this.setState((prevState) => ({
+                result: '0',
+                count: prevState.count.substring(0, prevState.count.length - 1)
+              }));
+            } else if(result.length > 1) {
+              this.setState((prevState) => ({
+                result: prevState.result.substring(0, prevState.result.length - 1),
+                count: prevState.count.substring(0, prevState.count.length - 1)
+              }));
+            }
+            break;
+          case 'equals':
+            this.setState({
+              count: '0=0'
+            })
+            break;
+          case 'decimal':
+            this.setState({
+              result: '0' + element.display,
+              count: '0' + element.display
+            })
             break;
         }
         break;
@@ -716,26 +791,44 @@ class App extends Component {
     const element = this.state.keys.find(obj => obj.id === e.target.id);
     const result = this.state.result;
     const count = this.state.count;
+    console.log(element);
     if ((result === '0' && count === '0') || (result === '0' && count === '0=0')) {
       this.handleBothZero(element);
     } else if (result === 'Undefined') {
-      this.handleUndefined(element);
+      this.handleUndefined(element)
     } else if (result === '0') {
-      this.handleResultZero(element, count, result);
+      this.handleResultZero(element, count, result)
     } else if (result !== '0' && count !== '0') {
       this.handleNoneZero(element, count, result);
     } 
   }
 
   handleKeyPress = (e) => {
-    const element = this.state.keys.find(obj => obj.id === e.target.id);
+    const element = this.state.keys.find(obj => obj.keyCode === e.keyCode);
     console.log(element);
-    console.log(e);
+    const result = this.state.result;
+    const count = this.state.count;
+    if(element) {
+      if ((result === '0' && count === '0') || (result === '0' && count === '0=0')) {
+        this.handleBothZero(element);
+      } else if (result === 'Undefined') {
+        this.handleUndefined(element);
+      } else if (result === '0') {
+        this.handleResultZero(element, count, result);
+      } else if (result !== '0' && count !== '0') {
+        this.handleNoneZero(element, count, result);
+        debugger;
+      } 
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress);
   }
 
   render() {
     return (
-      <div className="App container">
+      <div className="App container-fluid">
         <Calculator 
           keys={this.state.keys}
           result={this.state.result}

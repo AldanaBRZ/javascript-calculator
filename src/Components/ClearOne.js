@@ -7,8 +7,7 @@ const ClearOne = (props) => {
         className="btn btn-danger btn-block"
         type="button"
         id={props.button.id}
-        onClick={props.handleClick}
-        onKeyPress={props.handleKeyPress}>
+        onClick={props.handleClick}>
           <i 
             id={props.button.id}
             className="fas fa-arrow-left"

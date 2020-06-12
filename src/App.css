@@ -33,11 +33,13 @@
   margin: 0;
   vertical-align: bottom;
   text-align: right;
+  font-size: 1.4rem;
 }
 
 .display-count {
   margin: 0;
   text-align: right;
+  font-size: 0.8rem;
 }
 
 .display-count, .display-result {
